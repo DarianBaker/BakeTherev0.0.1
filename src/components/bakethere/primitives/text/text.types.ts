@@ -1,5 +1,4 @@
-import type { HTMLAttributes } from "react";
-import type { JSX } from "react";
+import type { HTMLAttributes, JSX } from "react";
 import type { BtTheme } from "../../types";
 
 export type TextVariant =
@@ -25,5 +24,4 @@ export interface TextProps extends HTMLAttributes<HTMLElement> {
   font?: TextFont;
   as?: keyof JSX.IntrinsicElements;
   theme?: BtTheme;
-  className?: string;
 }
