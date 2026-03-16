@@ -14,10 +14,10 @@ const headingsCode = `<Text variant="h1">Heading 1</Text>
 const displayCode = `<Text variant="display-lg">Display Large</Text>
 <Text variant="display">Display</Text>`;
 
-const bodyCode = `<Text variant="body-lg">Body Large — slightly larger paragraph text.</Text>
-<Text variant="body">Body — standard paragraph text.</Text>
-<Text variant="body-sm">Body Small — compact secondary text.</Text>
-<Text variant="caption">Caption — tiny label or image caption.</Text>
+const bodyCode = `<Text variant="body-lg">Body Large - slightly larger paragraph text.</Text>
+<Text variant="body">Body - standard paragraph text.</Text>
+<Text variant="body-sm">Body Small - compact secondary text.</Text>
+<Text variant="caption">Caption - tiny label or image caption.</Text>
 <Text variant="overline">Overline label</Text>
 <Text variant="code">const x = 42;</Text>`;
 
@@ -31,14 +31,14 @@ const asCode = `{/* Renders a <div> but looks like an h2 */}
 const propsData: PropRow[] = [
   {
     prop: "variant",
-    type: '"display-lg" | "display" | "h1"–"h6" | "body-lg" | "body" | "body-sm" | "caption" | "overline" | "code"',
+    type: '"display-lg" | "display" | "h1"-"h6" | "body-lg" | "body" | "body-sm" | "caption" | "overline" | "code"',
     defaultValue: '"body"',
     description: "Typography style and scale. Determines font size, weight, line height, and default HTML element.",
   },
   {
     prop: "font",
     type: '"sans" | "serif" | "mono"',
-    defaultValue: "—",
+    defaultValue: "-",
     description: 'Named font stack. "code" variant always uses mono regardless of this prop.',
   },
   {
@@ -50,7 +50,7 @@ const propsData: PropRow[] = [
   {
     prop: "theme",
     type: '"dark" | "warm" | "plain"',
-    defaultValue: "—",
+    defaultValue: "-",
     description: "Overrides the inherited theme for this element.",
   },
 ];
@@ -66,7 +66,7 @@ export default function TextPage() {
         </p>
       </div>
 
-      <ComponentPreview title="Headings" description="h1–h6 with fluid clamp() sizing" code={headingsCode}>
+      <ComponentPreview title="Headings" description="h1-h6 with fluid clamp() sizing" code={headingsCode}>
         <div className="flex flex-col gap-2 w-full">
           <Text variant="h1">Heading 1</Text>
           <Text variant="h2">Heading 2</Text>
@@ -86,10 +86,10 @@ export default function TextPage() {
 
       <ComponentPreview title="Body & Utility" description="Paragraph and label variants" code={bodyCode}>
         <div className="flex flex-col gap-3 w-full">
-          <Text variant="body-lg">Body Large — slightly larger paragraph text.</Text>
-          <Text variant="body">Body — standard paragraph text.</Text>
-          <Text variant="body-sm">Body Small — compact secondary text.</Text>
-          <Text variant="caption">Caption — tiny label or image caption.</Text>
+          <Text variant="body-lg">Body Large - slightly larger paragraph text.</Text>
+          <Text variant="body">Body - standard paragraph text.</Text>
+          <Text variant="body-sm">Body Small - compact secondary text.</Text>
+          <Text variant="caption">Caption - tiny label or image caption.</Text>
           <Text variant="overline">Overline label</Text>
           <Text variant="code">const x = 42;</Text>
         </div>
