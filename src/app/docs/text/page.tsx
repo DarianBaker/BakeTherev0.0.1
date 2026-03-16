@@ -33,7 +33,7 @@ const propsData: PropRow[] = [
     prop: "variant",
     type: '"display-lg" | "display" | "h1"–"h6" | "body-lg" | "body" | "body-sm" | "caption" | "overline" | "code"',
     defaultValue: '"body"',
-    description: "Typography style and scale. Determines font size, weight, and default HTML element.",
+    description: "Typography style and scale. Determines font size, weight, line height, and default HTML element.",
   },
   {
     prop: "font",
