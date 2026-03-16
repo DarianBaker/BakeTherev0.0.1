@@ -53,6 +53,23 @@ const weightMap: Record<TextVariant, number> = {
   "code":       400,
 };
 
+const lineHeightMap: Record<TextVariant, string> = {
+  "display-lg": "1.1",
+  "display":    "1.1",
+  "h1":         "1.2",
+  "h2":         "1.25",
+  "h3":         "1.3",
+  "h4":         "1.35",
+  "h5":         "1.4",
+  "h6":         "1.4",
+  "body-lg":    "1.7",
+  "body":       "1.6",
+  "body-sm":    "1.6",
+  "caption":    "1.5",
+  "overline":   "1.4",
+  "code":       "1.5",
+};
+
 const fontStacks: Record<TextFont, string> = {
   sans:  "var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif",
   serif: "Georgia, 'Times New Roman', ui-serif, serif",
@@ -83,6 +100,7 @@ export function Text({
       style={{
         fontSize:   sizeMap[variant],
         fontWeight: weightMap[variant],
+        lineHeight: lineHeightMap[variant],
         ...(resolvedFont ? { fontFamily: resolvedFont } : {}),
         ...(variant === "overline"
           ? { textTransform: "uppercase" as const, letterSpacing: "0.1em" }
