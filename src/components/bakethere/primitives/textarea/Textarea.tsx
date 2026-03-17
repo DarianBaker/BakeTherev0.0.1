@@ -23,23 +23,20 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     const { theme: contextTheme } = useBakeThereTheme();
     const activeTheme = theme ?? contextTheme;
 
-    const handleInput = useCallback(
-      (e: React.FormEvent<HTMLTextAreaElement>) => {
-        if (autoResize) {
-          const el = e.currentTarget;
-          el.style.height = "auto";
-          // Fallback for 'line-height: normal' — approximates text-sm * 1.5
-          const LINE_HEIGHT_FALLBACK = 21;
-          const lineHeight =
-            parseInt(getComputedStyle(el).lineHeight) || LINE_HEIGHT_FALLBACK;
-          const newHeight = maxRows
-            ? Math.min(el.scrollHeight, maxRows * lineHeight)
-            : el.scrollHeight;
-          el.style.height = `${newHeight}px`;
-        }
-        onInput?.(e as React.InputEvent<HTMLTextAreaElement>);
+    // Fallback for 'line-height: normal' — approximates text-sm * 1.5
+    const LINE_HEIGHT_FALLBACK = 21;
+
+    const doResize = useCallback(
+      (el: HTMLTextAreaElement) => {
+        el.style.height = "auto";
+        const lineHeight =
+          parseInt(getComputedStyle(el).lineHeight) || LINE_HEIGHT_FALLBACK;
+        const newHeight = maxRows
+          ? Math.min(el.scrollHeight, maxRows * lineHeight)
+          : el.scrollHeight;
+        el.style.height = `${newHeight}px`;
       },
-      [autoResize, maxRows, onInput]
+      [maxRows]
     );
 
     return (
@@ -48,7 +45,10 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           rows={rows}
           disabled={disabled}
-          onInput={handleInput}
+          onInput={(e) => {
+            if (autoResize) doResize(e.currentTarget as HTMLTextAreaElement);
+            onInput?.(e);
+          }}
           style={
             autoResize
               ? { resize: "none", overflow: "hidden", ...style }
