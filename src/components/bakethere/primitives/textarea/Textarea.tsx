@@ -28,14 +28,16 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         if (autoResize) {
           const el = e.currentTarget;
           el.style.height = "auto";
+          // Fallback for 'line-height: normal' — approximates text-sm * 1.5
+          const LINE_HEIGHT_FALLBACK = 21;
           const lineHeight =
-            parseInt(getComputedStyle(el).lineHeight) || 20;
+            parseInt(getComputedStyle(el).lineHeight) || LINE_HEIGHT_FALLBACK;
           const newHeight = maxRows
             ? Math.min(el.scrollHeight, maxRows * lineHeight)
             : el.scrollHeight;
           el.style.height = `${newHeight}px`;
         }
-        onInput?.(e as any);
+        onInput?.(e as React.InputEvent<HTMLTextAreaElement>);
       },
       [autoResize, maxRows, onInput]
     );
