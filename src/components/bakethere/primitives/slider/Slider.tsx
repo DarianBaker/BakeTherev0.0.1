@@ -22,7 +22,8 @@ export function Slider({
   const [internalValue, setInternalValue] = useState(defaultValue);
   const value = controlledValue ?? internalValue;
 
-  const percentage = ((value - min) / (max - min)) * 100;
+  const range = max - min;
+  const percentage = range === 0 ? 0 : ((value - min) / range) * 100;
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
