@@ -3,6 +3,7 @@
 import {
   createContext,
   useContext,
+  useId,
   useState,
   useCallback,
   useRef,
@@ -44,7 +45,8 @@ export function RadioGroup({
   const [internalValue, setInternalValue] = useState(defaultValue);
   const value = controlledValue ?? internalValue;
 
-  const groupName = name ?? "bt-radio-group";
+  const generatedName = useId();
+  const groupName = name ?? generatedName;
 
   const setSelected = useCallback(
     (val: string) => {
