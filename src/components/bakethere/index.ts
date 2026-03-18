@@ -11,6 +11,9 @@ export * from "./primitives/label";
 export * from "./primitives/checkbox";
 export * from "./primitives/toggle";
 export * from "./primitives/text";
+export * from "./primitives/textarea";
+export * from "./primitives/radio";
+export * from "./primitives/slider";
 
 // Display
 export * from "./display/card";

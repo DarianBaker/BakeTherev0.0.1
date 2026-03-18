@@ -14,6 +14,9 @@ const navSections = [
       { label: "Label", href: "/docs/label" },
       { label: "Checkbox", href: "/docs/checkbox" },
       { label: "Toggle", href: "/docs/toggle" },
+      { label: "Textarea", href: "/docs/textarea" },
+      { label: "Radio", href: "/docs/radio" },
+      { label: "Slider", href: "/docs/slider" },
     ],
   },
   {
