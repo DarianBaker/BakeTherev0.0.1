@@ -110,7 +110,7 @@
 
   --bt-accent:        #0A0A0A;
   --bt-accent-hover:  #333333;
-  --bt-accent-muted:  rgba(10,10,10,0.08);
+  --bt-accent-muted:  #E8E8E8;
 
   --bt-border:        #C0C0C0;
   --bt-border-focus:  #0A0A0A;
@@ -118,13 +118,13 @@
   --bt-ring:          rgba(10,10,10,0.25);
 
   --bt-destructive:        #DC2626;
-  --bt-destructive-bg:     rgba(220,38,38,0.08);
+  --bt-destructive-bg:     rgba(220,38,38,0.12);
   --bt-success:            #16A34A;
   --bt-warning:            #CA8A04;
 
   --bt-hover-bg:           rgba(0,0,0,0.04);
   --bt-active-bg:          rgba(0,0,0,0.08);
-  --bt-disabled-opacity:   0.35;
+  --bt-disabled-opacity:   0.55;
 
   --bt-shadow-sm:  0 1px 3px rgba(0,0,0,0.14);
   --bt-shadow-md:  0 4px 12px rgba(0,0,0,0.12);

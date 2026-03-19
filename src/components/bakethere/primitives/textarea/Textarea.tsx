@@ -60,7 +60,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             "px-3 py-2 text-sm transition-colors",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--bt-ring)]",
             "focus-visible:border-[var(--bt-border-focus)] border-[var(--bt-border)]",
-            "disabled:opacity-[var(--bt-disabled-opacity)] disabled:pointer-events-none",
+            "disabled:bg-[var(--bt-bg-muted)] disabled:text-[var(--bt-text-muted)] disabled:border-[var(--bt-border-muted)] disabled:pointer-events-none disabled:cursor-not-allowed",
             !autoResize && "resize-y",
             className
           )}
