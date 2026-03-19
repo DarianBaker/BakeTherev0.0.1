@@ -6,6 +6,12 @@ import { cn } from "@/lib/utils";
 
 const navSections = [
   {
+    title: "CLI",
+    items: [
+      { label: "CLI Reference", href: "/docs/cli" },
+    ],
+  },
+  {
     title: "Primitives",
     items: [
       { label: "Text", href: "/docs/text" },
