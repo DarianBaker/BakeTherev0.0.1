@@ -4,6 +4,51 @@ import { Card, CardHeader, CardContent, CardFooter } from "@/components/bakether
 import { Button } from "@/components/bakethere/primitives/button";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
+import { SourceSection } from "@/components/docs/SourceSection";
+
+const SOURCE = `import { cn } from "@/lib/utils";
+import type { CardProps, CardHeaderProps, CardContentProps, CardFooterProps } from "./card.types";
+
+export function Card({ theme, className, children, ...props }: CardProps) {
+  return (
+    <div
+      {...(theme ? { "data-bt-theme": theme } : {})}
+      className={cn(
+        "rounded-[var(--bt-radius-lg)] border border-[var(--bt-border)]",
+        "bg-[var(--bt-bg-surface)] shadow-[var(--bt-shadow-sm)]",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
+
+export function CardHeader({ className, children, ...props }: CardHeaderProps) {
+  return (
+    <div className={cn("flex flex-col gap-1.5 p-6", className)} {...props}>
+      {children}
+    </div>
+  );
+}
+
+export function CardContent({ className, children, ...props }: CardContentProps) {
+  return (
+    <div className={cn("p-6 pt-0", className)} {...props}>
+      {children}
+    </div>
+  );
+}
+
+export function CardFooter({ className, children, ...props }: CardFooterProps) {
+  return (
+    <div className={cn("flex items-center p-6 pt-0", className)} {...props}>
+      {children}
+    </div>
+  );
+}
+`;
 
 const cardCode = `// Card.tsx (server-component safe - no "use client")
 import { cn } from "@/lib/utils";
@@ -64,6 +109,8 @@ export default function CardPage() {
         <h2 className="text-xl font-semibold text-[var(--bt-text-primary)] mb-4">Props</h2>
         <PropsTable rows={propsData} />
       </div>
+
+      <SourceSection source={SOURCE} filename="Card.tsx" />
     </div>
   );
 }

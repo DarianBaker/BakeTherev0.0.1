@@ -4,6 +4,38 @@ import { Label } from "@/components/bakethere/primitives/label";
 import { Input } from "@/components/bakethere/primitives/input";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
+import { SourceSection } from "@/components/docs/SourceSection";
+
+const SOURCE = `import { cn } from "@/lib/utils";
+import type { LabelProps } from "./label.types";
+
+export function Label({
+  theme,
+  required,
+  className,
+  children,
+  ...props
+}: LabelProps) {
+  return (
+    <label
+      data-bt-theme={theme}
+      className={cn(
+        "text-sm font-medium text-[var(--bt-text-primary)] leading-none",
+        "peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+        className
+      )}
+      {...props}
+    >
+      {children}
+      {required && (
+        <span className="ml-1 text-[var(--bt-destructive)]" aria-hidden="true">
+          *
+        </span>
+      )}
+    </label>
+  );
+}
+`;
 
 const labelCode = `// label.types.ts
 import type { LabelHTMLAttributes } from "react";
@@ -70,6 +102,8 @@ export default function LabelPage() {
         <h2 className="text-xl font-semibold text-[var(--bt-text-primary)] mb-4">Props</h2>
         <PropsTable rows={propsData} />
       </div>
+
+      <SourceSection source={SOURCE} filename="Label.tsx" />
     </div>
   );
 }

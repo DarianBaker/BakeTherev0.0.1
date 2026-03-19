@@ -3,6 +3,39 @@
 import { Separator } from "@/components/bakethere/display/separator";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
+import { SourceSection } from "@/components/docs/SourceSection";
+
+const SOURCE = `import { cn } from "@/lib/utils";
+import type { SeparatorProps } from "./separator.types";
+
+export function Separator({
+  orientation = "horizontal",
+  theme,
+  className,
+  ...props
+}: SeparatorProps) {
+  if (orientation === "vertical") {
+    return (
+      <div
+        role="separator"
+        aria-orientation="vertical"
+        {...(theme ? { "data-bt-theme": theme } : {})}
+        className={cn("inline-block w-px self-stretch bg-[var(--bt-border)]", className)}
+        {...props}
+      />
+    );
+  }
+
+  return (
+    <hr
+      role="separator"
+      {...(theme ? { "data-bt-theme": theme } : {})}
+      className={cn("border-0 border-t border-[var(--bt-border)] w-full", className)}
+      {...props}
+    />
+  );
+}
+`;
 
 const separatorCode = `// Separator.tsx (server-component safe)
 import { cn } from "@/lib/utils";
@@ -49,6 +82,8 @@ export default function SeparatorPage() {
         <h2 className="text-xl font-semibold text-[var(--bt-text-primary)] mb-4">Props</h2>
         <PropsTable rows={propsData} />
       </div>
+
+      <SourceSection source={SOURCE} filename="Separator.tsx" />
     </div>
   );
 }

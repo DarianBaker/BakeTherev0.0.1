@@ -5,6 +5,37 @@ import { Button } from "@/components/bakethere/primitives/button";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { VariantGrid } from "@/components/docs/VariantGrid";
+import { SourceSection } from "@/components/docs/SourceSection";
+
+const SOURCE = `import { cn } from "@/lib/utils";
+import type { TooltipProps } from "./tooltip.types";
+
+export function Tooltip({
+  content,
+  side = "top",
+  delay = 0,
+  theme,
+  className,
+  children,
+}: TooltipProps) {
+  return (
+    <div
+      className={cn("bt-tooltip-wrapper relative inline-block", className)}
+      {...(theme ? { "data-bt-theme": theme } : {})}
+    >
+      {children}
+      <div
+        data-bt-tooltip=""
+        data-side={side}
+        role="tooltip"
+        style={delay ? { transitionDelay: \`\${delay}ms\` } : undefined}
+      >
+        {content}
+      </div>
+    </div>
+  );
+}
+`;
 
 const tooltipCode = `// Tooltip.tsx (server-component safe - CSS-only reveal)
 import { cn } from "@/lib/utils";
@@ -70,6 +101,8 @@ export default function TooltipPage() {
         <h2 className="text-xl font-semibold text-[var(--bt-text-primary)] mb-4">Props</h2>
         <PropsTable rows={propsData} />
       </div>
+
+      <SourceSection source={SOURCE} filename="Tooltip.tsx" />
     </div>
   );
 }
