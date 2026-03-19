@@ -4,6 +4,7 @@ import { Textarea } from "@/components/bakethere/primitives/textarea";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `"use client";
 
@@ -138,6 +139,8 @@ export default function TextareaPage() {
           A multi-line text input styled to match Input, with optional auto-resize and row clamping.
         </p>
       </div>
+
+      <InstallCommand componentName="textarea" />
 
       <ComponentPreview title="Default" code={defaultCode}>
         <Textarea placeholder="Type something..." />

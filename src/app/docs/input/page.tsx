@@ -5,6 +5,7 @@ import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { VariantGrid } from "@/components/docs/VariantGrid";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `"use client";
 
@@ -126,6 +127,8 @@ export default function InputPage() {
           A text input with built-in label, helper text, error state, and optional left/right add-ons.
         </p>
       </div>
+
+      <InstallCommand componentName="input" />
 
       <ComponentPreview title="Default" code={defaultCode}>
         <div className="w-80">

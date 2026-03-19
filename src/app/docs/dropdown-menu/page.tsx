@@ -4,6 +4,7 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuIte
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `"use client";
 
@@ -229,6 +230,8 @@ export default function DropdownMenuPage() {
           A compound dropdown menu with keyboard navigation (Arrow keys, Escape), click-outside close, and ARIA roles.
         </p>
       </div>
+
+      <InstallCommand componentName="dropdown-menu" />
 
       <ComponentPreview title="Basic Dropdown" code={dropdownCode}>
         <DropdownMenu>

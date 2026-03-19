@@ -5,6 +5,7 @@ import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { VariantGrid } from "@/components/docs/VariantGrid";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `import { cn } from "@/lib/utils";
 import type { BadgeProps } from "./badge.types";
@@ -69,6 +70,8 @@ export default function BadgePage() {
           A small status or label indicator with multiple visual variants. Server-component safe.
         </p>
       </div>
+
+      <InstallCommand componentName="badge" />
 
       <ComponentPreview title="Variants" code={variantsCode}>
         <VariantGrid>

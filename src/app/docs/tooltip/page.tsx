@@ -6,6 +6,7 @@ import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { VariantGrid } from "@/components/docs/VariantGrid";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `import { cn } from "@/lib/utils";
 import type { TooltipProps } from "./tooltip.types";
@@ -70,6 +71,8 @@ export default function TooltipPage() {
           A CSS-only hover/focus tooltip with four placement options. No JavaScript positioning - zero runtime cost.
         </p>
       </div>
+
+      <InstallCommand componentName="tooltip" />
 
       <ComponentPreview title="Placements" code={placementsCode}>
         <VariantGrid className="justify-center gap-6 py-8">

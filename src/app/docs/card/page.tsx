@@ -5,6 +5,7 @@ import { Button } from "@/components/bakethere/primitives/button";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `import { cn } from "@/lib/utils";
 import type { CardProps, CardHeaderProps, CardContentProps, CardFooterProps } from "./card.types";
@@ -80,6 +81,8 @@ export default function CardPage() {
           A compound card component with Header, Content, and Footer sub-components. Server-component safe.
         </p>
       </div>
+
+      <InstallCommand componentName="card" />
 
       <ComponentPreview title="Basic Card" code={cardCode}>
         <Card className="w-80">

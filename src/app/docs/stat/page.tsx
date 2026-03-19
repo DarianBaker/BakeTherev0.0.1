@@ -4,6 +4,7 @@ import { Stat } from "@/components/bakethere/display/stat";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const basicCode = `<Stat label="Total Revenue" value="$48,295" />`;
 
@@ -75,6 +76,8 @@ export default function StatPage() {
           A metric display component with optional trend coloring. Server-component safe.
         </p>
       </div>
+
+      <InstallCommand componentName="stat" />
 
       <ComponentPreview title="Basic Stat" description="Label and value only" code={basicCode}>
         <Stat label="Total Revenue" value="$48,295" />

@@ -6,6 +6,7 @@ import { Button } from "@/components/bakethere/primitives/button";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `"use client";
 
@@ -240,6 +241,8 @@ export default function DialogPage() {
           element - built-in focus trap, Escape key, and backdrop.
         </p>
       </div>
+
+      <InstallCommand componentName="dialog" />
 
       <ComponentPreview title="Basic Dialog" code={dialogCode}>
         <Dialog open={open} onOpenChange={setOpen}>

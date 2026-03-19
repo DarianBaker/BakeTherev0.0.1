@@ -5,6 +5,7 @@ import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { VariantGrid } from "@/components/docs/VariantGrid";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `"use client";
 
@@ -101,6 +102,8 @@ export default function AvatarPage() {
           A compound avatar component with image and fallback support. Images gracefully fall back to initials on error.
         </p>
       </div>
+
+      <InstallCommand componentName="avatar" />
 
       <ComponentPreview title="With Fallback" code={fallbackCode}>
         <VariantGrid>

@@ -5,6 +5,7 @@ import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { VariantGrid } from "@/components/docs/VariantGrid";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `"use client";
 
@@ -136,6 +137,8 @@ export default function ButtonPage() {
           A versatile button component supporting multiple visual variants, sizes, loading states, and icon slots.
         </p>
       </div>
+
+      <InstallCommand componentName="button" />
 
       <ComponentPreview title="Variants" code={variantsCode}>
         <VariantGrid>

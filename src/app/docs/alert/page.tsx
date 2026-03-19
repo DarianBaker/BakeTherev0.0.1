@@ -4,6 +4,7 @@ import { Alert, AlertTitle, AlertDescription } from "@/components/bakethere/disp
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `import { cn } from "@/lib/utils";
 import type { AlertProps, AlertTitleProps, AlertDescriptionProps, AlertVariant } from "./alert.types";
@@ -175,6 +176,8 @@ export default function AlertPage() {
           An inline feedback banner for persistent messages. Unlike Toast (transient), Alert lives in the document flow.
         </p>
       </div>
+
+      <InstallCommand componentName="alert" />
 
       <ComponentPreview title="Default" code={defaultCode}>
         <div className="p-4">

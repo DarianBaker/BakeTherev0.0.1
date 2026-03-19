@@ -6,6 +6,7 @@ import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { VariantGrid } from "@/components/docs/VariantGrid";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `"use client";
 
@@ -141,6 +142,8 @@ export default function TogglePage() {
           A sliding switch toggle with controlled/uncontrolled support and three sizes.
         </p>
       </div>
+
+      <InstallCommand componentName="toggle" />
 
       <ComponentPreview title="Sizes" code={toggleSizesCode}>
         <VariantGrid>

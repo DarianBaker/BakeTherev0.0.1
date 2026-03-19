@@ -6,6 +6,7 @@ import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { VariantGrid } from "@/components/docs/VariantGrid";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `"use client";
 
@@ -93,6 +94,8 @@ export default function ToastPage() {
           Add <code className="text-xs font-mono bg-[var(--bt-bg-muted)] px-1 rounded">&lt;ToastProvider /&gt;</code> once in your layout.
         </p>
       </div>
+
+      <InstallCommand componentName="toast" />
 
       <ComponentPreview title="Variants" code={toastCode}>
         <VariantGrid>

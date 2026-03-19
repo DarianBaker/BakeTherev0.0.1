@@ -5,6 +5,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/bakethere/primitives/ra
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `"use client";
 
@@ -204,6 +205,8 @@ export default function RadioPage() {
           A compound radio group with keyboard arrow-key navigation, controlled/uncontrolled support, and accessible hidden inputs.
         </p>
       </div>
+
+      <InstallCommand componentName="radio" />
 
       <ComponentPreview title="Basic" code={basicCode}>
         <RadioGroup defaultValue="option-1">

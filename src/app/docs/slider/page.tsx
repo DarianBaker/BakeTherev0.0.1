@@ -5,6 +5,7 @@ import { Slider } from "@/components/bakethere/primitives/slider";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `"use client";
 
@@ -97,6 +98,8 @@ export default function SliderPage() {
           A range slider with a filled track, custom thumb, controlled/uncontrolled support, and cross-browser styling via globals.css.
         </p>
       </div>
+
+      <InstallCommand componentName="slider" />
 
       <ComponentPreview title="Default" code={defaultCode}>
         <Slider defaultValue={40} />

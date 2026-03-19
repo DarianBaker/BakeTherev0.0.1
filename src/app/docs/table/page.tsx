@@ -5,6 +5,7 @@ import { Badge } from "@/components/bakethere/display/badge";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `import { cn } from "@/lib/utils";
 import type {
@@ -173,6 +174,8 @@ export default function TablePage() {
           A semantic table component with striped rows and sticky header support. Server-component safe.
         </p>
       </div>
+
+      <InstallCommand componentName="table" />
 
       <ComponentPreview title="Basic Table" code={basicTableCode}>
         <Table>

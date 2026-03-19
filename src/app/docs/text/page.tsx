@@ -4,6 +4,7 @@ import { Text } from "@/components/bakethere/primitives/text";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `import type { ElementType, JSX } from "react";
 import { cn } from "@/lib/utils";
@@ -184,6 +185,8 @@ export default function TextPage() {
           Server-component safe.
         </p>
       </div>
+
+      <InstallCommand componentName="text" />
 
       <ComponentPreview title="Headings" description="h1-h6 with fluid clamp() sizing" code={headingsCode}>
         <div className="flex flex-col gap-2 w-full">

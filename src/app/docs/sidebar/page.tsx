@@ -8,6 +8,7 @@ import { Button } from "@/components/bakethere/primitives/button";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `"use client";
 
@@ -316,6 +317,8 @@ export default function SidebarPage() {
           A slide-in overlay panel with backdrop, scroll lock, and composable slots. Supports left/right side, three sizes, and controlled or uncontrolled open state.
         </p>
       </div>
+
+      <InstallCommand componentName="sidebar" />
 
       <ComponentPreview title="Basic" code={basicCode}>
         <Sidebar open={basicOpen} onOpenChange={setBasicOpen}>

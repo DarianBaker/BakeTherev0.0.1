@@ -5,6 +5,7 @@ import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { VariantGrid } from "@/components/docs/VariantGrid";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `"use client";
 
@@ -235,6 +236,8 @@ export default function TabsPage() {
           Accessible tabs with line and pill variants, keyboard navigation, and controlled/uncontrolled support.
         </p>
       </div>
+
+      <InstallCommand componentName="tabs" />
 
       <ComponentPreview title="Line Variant" code={lineTabsCode}>
         <Tabs defaultValue="overview" variant="line">

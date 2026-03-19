@@ -12,6 +12,7 @@ import {
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `"use client";
 
@@ -499,6 +500,8 @@ export default function SelectPage() {
           A styled dropdown select for form use. Supports keyboard navigation, groups, and disabled items.
         </p>
       </div>
+
+      <InstallCommand componentName="select" />
 
       <ComponentPreview title="Basic" code={basicCode}>
         <div className="p-4">

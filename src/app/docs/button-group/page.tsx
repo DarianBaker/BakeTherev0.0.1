@@ -5,6 +5,7 @@ import { ButtonGroup } from "@/components/bakethere/primitives/button-group";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `import { cn } from "@/lib/utils";
 import type { ButtonGroupProps } from "./button-group.types";
@@ -49,6 +50,8 @@ export default function ButtonGroupPage() {
           A visual wrapper that connects multiple Button elements into a single cohesive control — collapsed borders, shared outer radius, horizontal layout.
         </p>
       </div>
+
+      <InstallCommand componentName="button-group" />
 
       <ComponentPreview title="Outline" code={basicCode}>
         <ButtonGroup>

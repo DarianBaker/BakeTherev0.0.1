@@ -4,6 +4,7 @@ import { Progress } from "@/components/bakethere/display/progress";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `import { cn } from "@/lib/utils";
 import type { ProgressProps } from "./progress.types";
@@ -93,6 +94,8 @@ export default function ProgressPage() {
           A horizontal progress bar for known loading states. Use Skeleton for unknown-duration loading.
         </p>
       </div>
+
+      <InstallCommand componentName="progress" />
 
       <ComponentPreview title="Determinate" code={determinateCode}>
         <div className="p-4 w-full">

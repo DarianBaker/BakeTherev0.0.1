@@ -5,6 +5,7 @@ import { Button } from "@/components/bakethere/primitives/button";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const basicCode = `<Empty
   title="No items found"
@@ -100,6 +101,8 @@ export default function EmptyPage() {
           Server-component safe.
         </p>
       </div>
+
+      <InstallCommand componentName="empty" />
 
       <ComponentPreview title="Basic" description="Title and description, default inbox icon" code={basicCode}>
         <Empty

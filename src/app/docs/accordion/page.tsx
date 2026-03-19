@@ -9,6 +9,7 @@ import {
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const singleCode = `<Accordion type="single" defaultValue="item-1">
   <AccordionItem value="item-1">
@@ -117,6 +118,8 @@ export default function AccordionPage() {
           grid-rows trick, and controlled/uncontrolled support.
         </p>
       </div>
+
+      <InstallCommand componentName="accordion" />
 
       <ComponentPreview title="Single (default)" description="Only one item open at a time" code={singleCode}>
         <Accordion type="single" defaultValue="item-1">

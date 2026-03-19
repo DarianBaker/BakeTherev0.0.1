@@ -30,6 +30,8 @@ const propsData: PropRow[] = [
   { prop: "className", type: "string", defaultValue: "-", description: "Additional Tailwind or custom classes" },
 ];
 
+import { InstallCommand } from "@/components/docs/InstallCommand";
+
 const SOURCE = `import { cn } from "@/lib/utils";
 import type { SkeletonProps } from "./skeleton.types";
 
@@ -63,6 +65,8 @@ export default function SkeletonPage() {
           Animated shimmer placeholders for loading states. Server-component safe.
         </p>
       </div>
+
+      <InstallCommand componentName="skeleton" />
 
       <ComponentPreview title="Line (default)" description="Full-width line skeletons for text content" code={lineCode}>
         <div className="w-full max-w-sm space-y-3">

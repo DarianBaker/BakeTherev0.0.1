@@ -8,6 +8,7 @@ import {
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const basicCode = `<Breadcrumb>
   <BreadcrumbItem href="/">Home</BreadcrumbItem>
@@ -100,6 +101,8 @@ export default function BreadcrumbPage() {
           accessible current-page marking.
         </p>
       </div>
+
+      <InstallCommand componentName="breadcrumb" />
 
       <ComponentPreview title="Basic" description="Home / Docs / Components / current page" code={basicCode}>
         <Breadcrumb>

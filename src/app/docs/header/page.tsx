@@ -6,6 +6,7 @@ import { Badge } from "@/components/bakethere/display/badge";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `"use client";
 
@@ -170,6 +171,8 @@ export default function HeaderPage() {
           A sticky or static header bar with Brand, Nav, and Actions slots. Supports three visual variants and an optional scroll-fade effect.
         </p>
       </div>
+
+      <InstallCommand componentName="header" />
 
       <ComponentPreview title="Bordered (Default)" code={borderedCode}>
         <div className="rounded-[var(--bt-radius-md)] overflow-hidden border border-[var(--bt-border)]">

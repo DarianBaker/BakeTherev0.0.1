@@ -6,6 +6,7 @@ import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { VariantGrid } from "@/components/docs/VariantGrid";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `"use client";
 
@@ -142,6 +143,8 @@ export default function CheckboxPage() {
           An accessible checkbox with controlled/uncontrolled support, three sizes, and keyboard navigation.
         </p>
       </div>
+
+      <InstallCommand componentName="checkbox" />
 
       <ComponentPreview title="Sizes" code={sizesCode}>
         <VariantGrid>

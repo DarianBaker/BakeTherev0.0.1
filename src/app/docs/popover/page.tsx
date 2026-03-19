@@ -6,6 +6,7 @@ import { Input } from "@/components/bakethere/primitives/input";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `"use client";
 
@@ -264,6 +265,8 @@ export default function PopoverPage() {
           A click-triggered floating panel. More generic than DropdownMenu — accepts any content.
         </p>
       </div>
+
+      <InstallCommand componentName="popover" />
 
       <ComponentPreview title="Basic" code={basicCode}>
         <div className="p-8 flex justify-center">

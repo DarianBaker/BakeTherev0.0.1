@@ -4,6 +4,7 @@ import { Separator } from "@/components/bakethere/display/separator";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `import { cn } from "@/lib/utils";
 import type { SeparatorProps } from "./separator.types";
@@ -63,6 +64,8 @@ export default function SeparatorPage() {
           A simple visual divider supporting horizontal and vertical orientations. Server-component safe.
         </p>
       </div>
+
+      <InstallCommand componentName="separator" />
 
       <ComponentPreview title="Horizontal" code={horizontalCode}>
         <div className="w-64 space-y-3">

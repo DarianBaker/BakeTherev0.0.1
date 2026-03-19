@@ -5,6 +5,7 @@ import { Input } from "@/components/bakethere/primitives/input";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
+import { InstallCommand } from "@/components/docs/InstallCommand";
 
 const SOURCE = `import { cn } from "@/lib/utils";
 import type { LabelProps } from "./label.types";
@@ -62,6 +63,8 @@ export default function LabelPage() {
           A semantic label component for form fields. Server-component safe - no client-side JavaScript required.
         </p>
       </div>
+
+      <InstallCommand componentName="label" />
 
       <ComponentPreview title="Basic Label" code={basicLabelCode}>
         <div className="flex flex-col gap-2">
