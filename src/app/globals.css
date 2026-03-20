@@ -123,3 +123,8 @@ input[type="range"].bt-slider:disabled {
   opacity: var(--bt-disabled-opacity);
   pointer-events: none;
 }
+
+@keyframes bt-shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position:  200% 0; }
+}
