@@ -26,6 +26,9 @@ const navSections = [
       { label: "Badge", href: "/docs/badge" },
       { label: "Avatar", href: "/docs/avatar" },
       { label: "Separator", href: "/docs/separator" },
+      { label: "Skeleton", href: "/docs/skeleton" },
+      { label: "Stat", href: "/docs/stat" },
+      { label: "Empty", href: "/docs/empty" },
     ],
   },
   {
