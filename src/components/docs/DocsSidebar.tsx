@@ -44,6 +44,8 @@ const navSections = [
     items: [
       { label: "Dropdown Menu", href: "/docs/dropdown-menu" },
       { label: "Tabs", href: "/docs/tabs" },
+      { label: "Accordion", href: "/docs/accordion" },
+      { label: "Breadcrumb", href: "/docs/breadcrumb" },
     ],
   },
   {
