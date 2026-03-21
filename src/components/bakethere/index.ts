@@ -33,6 +33,7 @@ export * from "./overlay/toast";
 export * from "./navigation/dropdown-menu";
 export * from "./navigation/tabs";
 export * from "./navigation/accordion";
+export * from "./navigation/breadcrumb";
 
 // Data
 export * from "./data/table";
