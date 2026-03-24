@@ -131,6 +131,8 @@ input[type="range"].bt-slider:disabled {
 
 /* Skeleton wrap mode — skeletons any component passed as children */
 .bt-skeleton-wrap {
+  position: relative;
+  overflow: hidden;
   pointer-events: none;
   user-select: none;
 }
@@ -141,33 +143,22 @@ input[type="range"].bt-slider:disabled {
   text-shadow: none !important;
   background: var(--bt-skeleton-base) !important;
 }
-/* Leaf elements (no child elements) get the shimmer animation */
-.bt-skeleton-wrap *:not(:has(*)) {
-  background: linear-gradient(
-    90deg,
-    var(--bt-skeleton-base) 25%,
-    var(--bt-skeleton-highlight) 50%,
-    var(--bt-skeleton-base) 75%
-  ) !important;
-  background-size: 200% 100% !important;
-  animation: bt-shimmer 1.5s ease-in-out infinite !important;
-}
-/* SVG icons: shimmer the container, blank the interior paths */
-.bt-skeleton-wrap svg {
-  background: linear-gradient(
-    90deg,
-    var(--bt-skeleton-base) 25%,
-    var(--bt-skeleton-highlight) 50%,
-    var(--bt-skeleton-base) 75%
-  ) !important;
-  background-size: 200% 100% !important;
-  animation: bt-shimmer 1.5s ease-in-out infinite !important;
-  border-radius: var(--bt-radius-sm);
-  overflow: hidden;
-}
 .bt-skeleton-wrap svg * {
   fill: transparent !important;
   stroke: transparent !important;
   background: transparent !important;
-  animation: none !important;
+}
+/* Sweep overlay — uses transform so !important background rules can't block it */
+.bt-skeleton-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  animation: bt-shimmer-sweep 1.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes bt-shimmer-sweep {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
 }
