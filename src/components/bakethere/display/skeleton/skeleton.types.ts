@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 export type SkeletonShape = "line" | "rect" | "circle";
 
 export interface SkeletonProps {
@@ -5,4 +7,5 @@ export interface SkeletonProps {
   width?: string | number;
   height?: string | number;
   className?: string;
+  children?: ReactNode;
 }
