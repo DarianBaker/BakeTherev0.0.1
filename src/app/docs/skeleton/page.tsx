@@ -1,10 +1,6 @@
 "use client";
 
 import { Skeleton } from "@/components/bakethere/display/skeleton";
-import { Card } from "@/components/bakethere/display/card";
-import { Avatar, AvatarFallback } from "@/components/bakethere/display/avatar";
-import { Badge } from "@/components/bakethere/display/badge";
-import { Button } from "@/components/bakethere/primitives/button";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable, type PropRow } from "@/components/docs/PropsTable";
 import { SourceSection } from "@/components/docs/SourceSection";
@@ -27,23 +23,8 @@ const composedCode = `<div className="flex items-center gap-3">
 </div>
 <Skeleton shape="rect" height={120} />`;
 
-const wrapCode = `<Skeleton>
-  <Card className="p-4 flex items-start gap-3 w-72">
-    <Avatar size="md"><AvatarFallback>AB</AvatarFallback></Avatar>
-    <div className="flex-1 min-w-0">
-      <div className="flex items-center justify-between gap-2">
-        <h3 className="text-sm font-semibold">Alex Brown</h3>
-        <Badge>Admin</Badge>
-      </div>
-      <p className="text-xs mt-0.5">alex@example.com</p>
-      <Button size="sm" className="mt-3">View Profile</Button>
-    </div>
-  </Card>
-</Skeleton>`;
-
 const propsData: PropRow[] = [
-  { prop: "children", type: "ReactNode", defaultValue: "-", description: "When provided, enters wrap mode — renders the children but replaces all visual content with the shimmer animation. Layout and structure are fully preserved." },
-  { prop: "shape", type: '"line" | "rect" | "circle"', defaultValue: '"line"', description: "Shape of the standalone skeleton placeholder. Ignored in wrap mode." },
+  { prop: "shape", type: '"line" | "rect" | "circle"', defaultValue: '"line"', description: "Shape of the skeleton placeholder" },
   { prop: "width", type: "string | number", defaultValue: "-", description: "CSS width. Numbers are converted to px." },
   { prop: "height", type: "string | number", defaultValue: "-", description: "CSS height. Numbers are converted to px." },
   { prop: "className", type: "string", defaultValue: "-", description: "Additional Tailwind or custom classes" },
@@ -58,37 +39,20 @@ const shapeClasses: Record<string, string> = {
   circle: "rounded-full",
 };
 
-export function Skeleton({ shape = "line", width, height, className, children }: SkeletonProps) {
-  const sizeStyle = {
-    width:  width  ? (typeof width  === "number" ? \`\${width}px\`  : width)  : undefined,
-    height: height ? (typeof height === "number" ? \`\${height}px\` : height) : undefined,
-  };
-
-  if (children !== undefined) {
-    return (
-      <div className={cn("bt-skeleton-wrap", className)} style={sizeStyle}>
-        {children}
-      </div>
-    );
-  }
-
+export function Skeleton({ shape = "line", width, height, className }: SkeletonProps) {
   return (
     <div
       style={{
-        ...sizeStyle,
-        background: "linear-gradient(90deg, var(--bt-bg-muted) 25%, var(--bt-bg-elevated) 50%, var(--bt-bg-muted) 75%)",
+        width:  width  ? (typeof width  === "number" ? \`\${width}px\`  : width)  : undefined,
+        height: height ? (typeof height === "number" ? \`\${height}px\` : height) : undefined,
+        background: "linear-gradient(90deg, var(--bt-skeleton-base) 25%, var(--bt-skeleton-highlight) 50%, var(--bt-skeleton-base) 75%)",
         backgroundSize: "200% 100%",
         animation: "bt-shimmer 1.5s ease-in-out infinite",
       }}
       className={cn(shapeClasses[shape], className)}
     />
   );
-}
-
-// Also add to globals.css:
-// .bt-skeleton-wrap { pointer-events: none; user-select: none; }
-// .bt-skeleton-wrap * { color: transparent !important; border-color: transparent !important; ... }
-// .bt-skeleton-wrap *:not(:has(*)) { background: shimmer gradient !important; animation: bt-shimmer ... }`;
+}`;
 
 export default function SkeletonPage() {
   return (
@@ -130,22 +94,6 @@ export default function SkeletonPage() {
           </div>
           <Skeleton shape="rect" height={120} />
         </div>
-      </ComponentPreview>
-
-      <ComponentPreview title="Wrap Mode" description="Pass any component as children — Skeleton skeletonizes its full tree automatically" code={wrapCode}>
-        <Skeleton>
-          <Card className="p-4 flex items-start gap-3 w-72">
-            <Avatar size="md"><AvatarFallback>AB</AvatarFallback></Avatar>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center justify-between gap-2">
-                <h3 className="text-sm font-semibold">Alex Brown</h3>
-                <Badge>Admin</Badge>
-              </div>
-              <p className="text-xs mt-0.5">alex@example.com</p>
-              <Button size="sm" className="mt-3">View Profile</Button>
-            </div>
-          </Card>
-        </Skeleton>
       </ComponentPreview>
 
       <div>

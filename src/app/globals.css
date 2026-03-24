@@ -129,36 +129,3 @@ input[type="range"].bt-slider:disabled {
   to   { background-position:  200% 0; }
 }
 
-/* Skeleton wrap mode — skeletons any component passed as children */
-.bt-skeleton-wrap {
-  position: relative;
-  overflow: hidden;
-  pointer-events: none;
-  user-select: none;
-}
-.bt-skeleton-wrap * {
-  color: transparent !important;
-  border-color: transparent !important;
-  box-shadow: none !important;
-  text-shadow: none !important;
-  background: var(--bt-skeleton-base) !important;
-}
-.bt-skeleton-wrap svg * {
-  fill: transparent !important;
-  stroke: transparent !important;
-  background: transparent !important;
-}
-/* Sweep overlay — uses transform so !important background rules can't block it */
-.bt-skeleton-wrap::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-  animation: bt-shimmer-sweep 1.5s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes bt-shimmer-sweep {
-  from { transform: translateX(-100%); }
-  to   { transform: translateX(100%); }
-}
