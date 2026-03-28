@@ -10,6 +10,7 @@ const navSections = [
     items: [
       { label: "Text", href: "/docs/text" },
       { label: "Button", href: "/docs/button" },
+      { label: "ButtonGroup", href: "/docs/button-group" },
       { label: "Input", href: "/docs/input" },
       { label: "Label", href: "/docs/label" },
       { label: "Checkbox", href: "/docs/checkbox" },
@@ -17,6 +18,7 @@ const navSections = [
       { label: "Textarea", href: "/docs/textarea" },
       { label: "Radio", href: "/docs/radio" },
       { label: "Slider", href: "/docs/slider" },
+      { label: "Select", href: "/docs/select" },
     ],
   },
   {
@@ -29,6 +31,8 @@ const navSections = [
       { label: "Skeleton", href: "/docs/skeleton" },
       { label: "Stat", href: "/docs/stat" },
       { label: "Empty", href: "/docs/empty" },
+      { label: "Alert", href: "/docs/alert" },
+      { label: "Progress", href: "/docs/progress" },
     ],
   },
   {
@@ -37,6 +41,7 @@ const navSections = [
       { label: "Dialog", href: "/docs/dialog" },
       { label: "Tooltip", href: "/docs/tooltip" },
       { label: "Toast", href: "/docs/toast" },
+      { label: "Popover", href: "/docs/popover" },
     ],
   },
   {
@@ -52,6 +57,13 @@ const navSections = [
     title: "Data",
     items: [
       { label: "Table", href: "/docs/table" },
+    ],
+  },
+  {
+    title: "Layout",
+    items: [
+      { label: "Sidebar", href: "/docs/sidebar" },
+      { label: "Header", href: "/docs/header" },
     ],
   },
   {
