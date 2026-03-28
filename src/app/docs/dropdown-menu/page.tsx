@@ -203,31 +203,16 @@ export function DropdownMenuLabel({ children, className, ...props }: DropdownMen
 }
 `;
 
-const dropdownCode = `// DropdownMenu.tsx ("use client")
-"use client";
-import { createContext, useContext, useState, useRef, useEffect } from "react";
-
-export function DropdownMenu({ children, theme }) {
-  const [open, setOpen] = useState(false);
-  const containerRef = useRef(null);
-  // Click-outside closes via mousedown listener
-  useEffect(() => {
-    if (!open) return;
-    const handler = (e) => { if (!containerRef.current?.contains(e.target)) setOpen(false); };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, [open]);
-  return (
-    <DropdownContext.Provider value={{ open, setOpen }}>
-      <div ref={containerRef} data-bt-theme={activeTheme} className="relative inline-block">{children}</div>
-    </DropdownContext.Provider>
-  );
-}
-// DropdownMenuTrigger: aria-haspopup + aria-expanded
-// DropdownMenuContent: role="menu", Arrow key navigation, Escape closes
-// DropdownMenuItem: role="menuitem", auto-closes on click
-// DropdownMenuSeparator: role="separator"
-// DropdownMenuLabel: section heading`;
+const dropdownCode = `<DropdownMenu>
+  <DropdownMenuTrigger>Open Menu</DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuLabel>Account</DropdownMenuLabel>
+    <DropdownMenuItem>Profile</DropdownMenuItem>
+    <DropdownMenuItem>Settings</DropdownMenuItem>
+    <DropdownMenuSeparator />
+    <DropdownMenuItem destructive>Sign out</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>`;
 
 const propsData: PropRow[] = [
   { prop: "theme", type: '"dark" | "warm" | "plain"', defaultValue: "context", description: "Theme override for the dropdown" },
