@@ -46,26 +46,13 @@ export function Badge({
 }
 `;
 
-const badgeCode = `// Badge.tsx (server-component safe)
-import { cn } from "@/lib/utils";
+const variantsCode = `<Badge variant="default">Default</Badge>
+<Badge variant="secondary">Secondary</Badge>
+<Badge variant="destructive">Destructive</Badge>
+<Badge variant="outline">Outline</Badge>`;
 
-const variantClasses = {
-  default: "bg-[var(--bt-accent-muted)] text-[var(--bt-accent)] border-transparent",
-  secondary: "bg-[var(--bt-bg-muted)] text-[var(--bt-text-secondary)] border-transparent",
-  destructive: "bg-[var(--bt-destructive-bg)] text-[var(--bt-destructive)] border-transparent",
-  outline: "bg-transparent text-[var(--bt-text-primary)] border-[var(--bt-border)]",
-};
-
-export function Badge({ variant = "default", size = "sm", theme, className, children, ...props }) {
-  return (
-    <span {...(theme ? { "data-bt-theme": theme } : {})}
-      className={cn("inline-flex items-center font-medium border rounded-[var(--bt-radius-full)]",
-        variantClasses[variant], { sm: "px-2 py-0.5 text-xs", md: "px-2.5 py-0.5 text-sm" }[size], className)}
-      {...props}>
-      {children}
-    </span>
-  );
-}`;
+const sizesCode = `<Badge size="sm">Small</Badge>
+<Badge size="md">Medium</Badge>`;
 
 const propsData: PropRow[] = [
   { prop: "variant", type: '"default" | "secondary" | "destructive" | "outline"', defaultValue: '"default"', description: "Visual style variant" },
@@ -83,7 +70,7 @@ export default function BadgePage() {
         </p>
       </div>
 
-      <ComponentPreview title="Variants" code={badgeCode}>
+      <ComponentPreview title="Variants" code={variantsCode}>
         <VariantGrid>
           <Badge variant="default">Default</Badge>
           <Badge variant="secondary">Secondary</Badge>
@@ -92,7 +79,7 @@ export default function BadgePage() {
         </VariantGrid>
       </ComponentPreview>
 
-      <ComponentPreview title="Sizes" code={badgeCode}>
+      <ComponentPreview title="Sizes" code={sizesCode}>
         <VariantGrid>
           <Badge size="sm">Small</Badge>
           <Badge size="md">Medium</Badge>

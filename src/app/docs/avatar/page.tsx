@@ -73,38 +73,19 @@ export function AvatarFallback({ className, children, ...props }: AvatarFallback
 }
 `;
 
-const avatarCode = `// Avatar.tsx ("use client" - AvatarImage uses useState)
-"use client";
-import { useState } from "react";
-import { cn } from "@/lib/utils";
+const fallbackCode = `<Avatar size="sm"><AvatarFallback>JD</AvatarFallback></Avatar>
+<Avatar size="md"><AvatarFallback>AB</AvatarFallback></Avatar>
+<Avatar size="lg"><AvatarFallback>CD</AvatarFallback></Avatar>
+<Avatar size="xl"><AvatarFallback>EF</AvatarFallback></Avatar>`;
 
-const sizeClasses = { sm: "h-6 w-6 text-xs", md: "h-10 w-10 text-sm", lg: "h-14 w-14 text-base", xl: "h-[72px] w-[72px] text-lg" };
-
-export function Avatar({ size = "md", theme, className, children, ...props }) {
-  return (
-    <div {...(theme ? { "data-bt-theme": theme } : {})}
-      className={cn("relative inline-flex items-center justify-center rounded-full overflow-hidden bg-[var(--bt-bg-muted)] text-[var(--bt-text-secondary)]", sizeClasses[size], className)}
-      {...props}>
-      {children}
-    </div>
-  );
-}
-
-export function AvatarImage({ src, alt = "", className, onError, ...props }) {
-  const [errored, setErrored] = useState(false);
-  if (errored) return null;
-  return <img src={src} alt={alt} className={cn("h-full w-full object-cover", className)} onError={(e) => { setErrored(true); onError?.(e); }} {...props} />;
-}
-
-export function AvatarFallback({ className, children, ...props }) {
-  return (
-    <div aria-hidden="true"
-      className={cn("absolute inset-0 flex items-center justify-center font-medium text-[var(--bt-text-secondary)]", className)}
-      {...props}>
-      {children}
-    </div>
-  );
-}`;
+const imageCode = `<Avatar>
+  <AvatarImage src="https://i.pravatar.cc/40?img=1" alt="User" />
+  <AvatarFallback>U1</AvatarFallback>
+</Avatar>
+<Avatar>
+  <AvatarImage src="https://broken-url.example.com/img.jpg" alt="Error" />
+  <AvatarFallback>ER</AvatarFallback>
+</Avatar>`;
 
 const propsData: PropRow[] = [
   { prop: "size", type: '"sm" | "md" | "lg" | "xl"', defaultValue: '"md"', description: "Size of the avatar (24px / 40px / 56px / 72px)" },
@@ -121,7 +102,7 @@ export default function AvatarPage() {
         </p>
       </div>
 
-      <ComponentPreview title="With Fallback" code={avatarCode}>
+      <ComponentPreview title="With Fallback" code={fallbackCode}>
         <VariantGrid>
           <Avatar size="sm"><AvatarFallback>JD</AvatarFallback></Avatar>
           <Avatar size="md"><AvatarFallback>AB</AvatarFallback></Avatar>
@@ -130,7 +111,7 @@ export default function AvatarPage() {
         </VariantGrid>
       </ComponentPreview>
 
-      <ComponentPreview title="With Image (fallback on error)" code={avatarCode}>
+      <ComponentPreview title="With Image (fallback on error)" code={imageCode}>
         <VariantGrid>
           <Avatar>
             <AvatarImage src="https://i.pravatar.cc/40?img=1" alt="User" />

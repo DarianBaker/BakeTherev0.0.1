@@ -37,15 +37,17 @@ export function Separator({
 }
 `;
 
-const separatorCode = `// Separator.tsx (server-component safe)
-import { cn } from "@/lib/utils";
+const horizontalCode = `<div className="w-64 space-y-3">
+  <p className="text-sm text-[var(--bt-text-secondary)]">Above</p>
+  <Separator />
+  <p className="text-sm text-[var(--bt-text-secondary)]">Below</p>
+</div>`;
 
-export function Separator({ orientation = "horizontal", theme, className, ...props }) {
-  if (orientation === "vertical") {
-    return <div role="separator" aria-orientation="vertical" {...(theme ? { "data-bt-theme": theme } : {})} className={cn("inline-block w-px self-stretch bg-[var(--bt-border)]", className)} {...props} />;
-  }
-  return <hr role="separator" {...(theme ? { "data-bt-theme": theme } : {})} className={cn("border-0 border-t border-[var(--bt-border)] w-full", className)} {...props} />;
-}`;
+const verticalCode = `<div className="flex items-center gap-4 h-8">
+  <span className="text-sm text-[var(--bt-text-secondary)]">Left</span>
+  <Separator orientation="vertical" />
+  <span className="text-sm text-[var(--bt-text-secondary)]">Right</span>
+</div>`;
 
 const propsData: PropRow[] = [
   { prop: "orientation", type: '"horizontal" | "vertical"', defaultValue: '"horizontal"', description: "Orientation of the divider line" },
@@ -62,7 +64,7 @@ export default function SeparatorPage() {
         </p>
       </div>
 
-      <ComponentPreview title="Horizontal" code={separatorCode}>
+      <ComponentPreview title="Horizontal" code={horizontalCode}>
         <div className="w-64 space-y-3">
           <p className="text-sm text-[var(--bt-text-secondary)]">Above</p>
           <Separator />
@@ -70,7 +72,7 @@ export default function SeparatorPage() {
         </div>
       </ComponentPreview>
 
-      <ComponentPreview title="Vertical" code={separatorCode}>
+      <ComponentPreview title="Vertical" code={verticalCode}>
         <div className="flex items-center gap-4 h-8">
           <span className="text-sm text-[var(--bt-text-secondary)]">Left</span>
           <Separator orientation="vertical" />
