@@ -60,35 +60,20 @@ export function Toast({
 }
 `;
 
-const toastCode = `// useToast.ts - useSyncExternalStore pattern (required for React Compiler)
-"use client";
-import { useSyncExternalStore, useCallback } from "react";
+const toastCode = `const { toast } = useToast();
 
-let toasts: ToastItem[] = [];
-const listeners = new Set<() => void>();
-function notify() { listeners.forEach(l => l()); }
-
-const store = {
-  subscribe(listener: () => void) { listeners.add(listener); return () => listeners.delete(listener); },
-  getSnapshot(): ToastItem[] { return toasts; },
-};
-
-function addToast(options: ToastOptions): string {
-  const id = Math.random().toString(36).slice(2);
-  toasts = [...toasts, { id, ...options }];
-  notify();
-  return id;
-}
-
-export function useToast() {
-  const items = useSyncExternalStore(store.subscribe, store.getSnapshot, store.getSnapshot);
-  const toast = useCallback((options: ToastOptions) => addToast(options), []);
-  const dismiss = useCallback((id: string) => { toasts = toasts.filter(t => t.id !== id); notify(); }, []);
-  return { toasts: items, toast, dismiss };
-}
-
-// Add ToastProvider to your layout:
-// <ToastProvider /> - renders a portal into document.body`;
+<Button onClick={() => toast({ title: "Default", description: "A default notification." })}>
+  Default
+</Button>
+<Button onClick={() => toast({ title: "Success!", description: "Operation completed.", variant: "success" })}>
+  Success
+</Button>
+<Button variant="destructive" onClick={() => toast({ title: "Error", description: "Something went wrong.", variant: "destructive" })}>
+  Destructive
+</Button>
+<Button onClick={() => toast({ title: "Warning", description: "Please review your input.", variant: "warning" })}>
+  Warning
+</Button>`;
 
 const propsData: PropRow[] = [
   { prop: "title", type: "string", defaultValue: "-", description: "Main toast heading" },

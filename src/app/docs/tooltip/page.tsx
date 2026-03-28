@@ -37,25 +37,22 @@ export function Tooltip({
 }
 `;
 
-const tooltipCode = `// Tooltip.tsx (server-component safe - CSS-only reveal)
-import { cn } from "@/lib/utils";
+const placementsCode = `<Tooltip content="Tooltip on top" side="top">
+  <Button variant="outline" size="sm">Top</Button>
+</Tooltip>
+<Tooltip content="Tooltip on bottom" side="bottom">
+  <Button variant="outline" size="sm">Bottom</Button>
+</Tooltip>
+<Tooltip content="Tooltip on left" side="left">
+  <Button variant="outline" size="sm">Left</Button>
+</Tooltip>
+<Tooltip content="Tooltip on right" side="right">
+  <Button variant="outline" size="sm">Right</Button>
+</Tooltip>`;
 
-export function Tooltip({ content, side = "top", delay = 0, theme, className, children }) {
-  return (
-    <div className={cn("bt-tooltip-wrapper relative inline-block", className)} {...(theme ? { "data-bt-theme": theme } : {})}>
-      {children}
-      <div data-bt-tooltip="" data-side={side} role="tooltip"
-        style={delay ? { transitionDelay: \`\${delay}ms\` } : undefined}>
-        {content}
-      </div>
-    </div>
-  );
-}
-
-// CSS in globals.css controls show/hide:
-// .bt-tooltip-wrapper:hover [data-bt-tooltip] { opacity: 1; }
-// .bt-tooltip-wrapper:focus-within [data-bt-tooltip] { opacity: 1; }
-// [data-bt-tooltip][data-side="top"] { bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); }`;
+const delayCode = `<Tooltip content="Appears after 500ms" side="top" delay={500}>
+  <Button variant="outline" size="sm">Hover (500ms delay)</Button>
+</Tooltip>`;
 
 const propsData: PropRow[] = [
   { prop: "content", type: "ReactNode", defaultValue: "-", description: "The tooltip content to display" },
@@ -74,7 +71,7 @@ export default function TooltipPage() {
         </p>
       </div>
 
-      <ComponentPreview title="Placements" code={tooltipCode}>
+      <ComponentPreview title="Placements" code={placementsCode}>
         <VariantGrid className="justify-center gap-6 py-8">
           <Tooltip content="Tooltip on top" side="top">
             <Button variant="outline" size="sm">Top</Button>
@@ -91,7 +88,7 @@ export default function TooltipPage() {
         </VariantGrid>
       </ComponentPreview>
 
-      <ComponentPreview title="With Delay" code={tooltipCode}>
+      <ComponentPreview title="With Delay" code={delayCode}>
         <Tooltip content="Appears after 500ms" side="top" delay={500}>
           <Button variant="outline" size="sm">Hover (500ms delay)</Button>
         </Tooltip>
