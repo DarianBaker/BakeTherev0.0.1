@@ -102,66 +102,20 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button";
 `;
 
-const buttonCode = `// button.types.ts
-import type { ButtonHTMLAttributes } from "react";
-import type { BtTheme } from "../../types";
+const variantsCode = `<Button variant="solid">Solid</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="destructive">Destructive</Button>`;
 
-export type ButtonVariant = "solid" | "outline" | "ghost" | "destructive";
-export type ButtonSize = "sm" | "md" | "lg" | "icon";
+const sizesCode = `<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>`;
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  theme?: BtTheme;
-  isLoading?: boolean;
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
-}
+const loadingCode = `<Button isLoading>Loading</Button>
+<Button isLoading variant="outline">Loading</Button>`;
 
-// Button.tsx
-"use client";
-import { forwardRef } from "react";
-import { cn } from "@/lib/utils";
-import { useBakeThereTheme } from "../../provider";
-import type { ButtonProps } from "./button.types";
-
-const variantClasses = {
-  solid: "bg-[var(--bt-accent)] text-[var(--bt-text-inverse)] hover:bg-[var(--bt-accent-hover)] border border-transparent",
-  outline: "bg-transparent text-[var(--bt-accent)] border border-[var(--bt-accent)] hover:bg-[var(--bt-accent-muted)]",
-  ghost: "bg-transparent text-[var(--bt-text-primary)] border border-transparent hover:bg-[var(--bt-hover-bg)]",
-  destructive: "bg-[var(--bt-destructive-bg)] text-[var(--bt-destructive)] border border-[var(--bt-destructive)] hover:opacity-80",
-};
-
-const sizeClasses = {
-  sm: "h-8 px-3 text-sm gap-1.5",
-  md: "h-10 px-4 text-sm gap-2",
-  lg: "h-12 px-6 text-base gap-2",
-  icon: "h-10 w-10 p-0",
-};
-
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant = "solid", size = "md", theme, isLoading = false, leftIcon, rightIcon, disabled, className, children, ...props }, ref) => {
-    const { theme: contextTheme } = useBakeThereTheme();
-    const activeTheme = theme ?? contextTheme;
-    return (
-      <button
-        ref={ref}
-        data-bt-theme={activeTheme}
-        disabled={disabled || isLoading}
-        className={cn(
-          "inline-flex items-center justify-center font-medium rounded-[var(--bt-radius-md)] transition-colors",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--bt-ring)]",
-          "disabled:opacity-[var(--bt-disabled-opacity)] disabled:pointer-events-none",
-          variantClasses[variant], sizeClasses[size], className
-        )}
-        {...props}
-      >
-        {isLoading ? <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg> : <>{leftIcon && <span aria-hidden="true">{leftIcon}</span>}{children}{rightIcon && <span aria-hidden="true">{rightIcon}</span>}</>}
-      </button>
-    );
-  }
-);
-Button.displayName = "Button";`;
+const disabledCode = `<Button disabled>Disabled</Button>
+<Button disabled variant="outline">Disabled</Button>`;
 
 const propsData: PropRow[] = [
   { prop: "variant", type: '"solid" | "outline" | "ghost" | "destructive"', defaultValue: '"solid"', description: "Visual style of the button" },
@@ -183,7 +137,7 @@ export default function ButtonPage() {
         </p>
       </div>
 
-      <ComponentPreview title="Variants" code={buttonCode}>
+      <ComponentPreview title="Variants" code={variantsCode}>
         <VariantGrid>
           <Button variant="solid">Solid</Button>
           <Button variant="outline">Outline</Button>
@@ -192,7 +146,7 @@ export default function ButtonPage() {
         </VariantGrid>
       </ComponentPreview>
 
-      <ComponentPreview title="Sizes" code={buttonCode}>
+      <ComponentPreview title="Sizes" code={sizesCode}>
         <VariantGrid>
           <Button size="sm">Small</Button>
           <Button size="md">Medium</Button>
@@ -200,14 +154,14 @@ export default function ButtonPage() {
         </VariantGrid>
       </ComponentPreview>
 
-      <ComponentPreview title="Loading State" code={buttonCode}>
+      <ComponentPreview title="Loading State" code={loadingCode}>
         <VariantGrid>
           <Button isLoading>Loading</Button>
           <Button isLoading variant="outline">Loading</Button>
         </VariantGrid>
       </ComponentPreview>
 
-      <ComponentPreview title="Disabled" code={buttonCode}>
+      <ComponentPreview title="Disabled" code={disabledCode}>
         <VariantGrid>
           <Button disabled>Disabled</Button>
           <Button disabled variant="outline">Disabled</Button>

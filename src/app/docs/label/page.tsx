@@ -37,36 +37,15 @@ export function Label({
 }
 `;
 
-const labelCode = `// label.types.ts
-import type { LabelHTMLAttributes } from "react";
-import type { BtTheme } from "../../types";
+const basicLabelCode = `<div className="flex flex-col gap-2">
+  <Label htmlFor="demo-name">Full name</Label>
+  <Input id="demo-name" placeholder="John Doe" />
+</div>`;
 
-export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
-  theme?: BtTheme;
-  required?: boolean;
-}
-
-// Label.tsx
-// No "use client" - server-component safe
-import { cn } from "@/lib/utils";
-import type { LabelProps } from "./label.types";
-
-export function Label({ theme, required, className, children, ...props }: LabelProps) {
-  return (
-    <label
-      data-bt-theme={theme}
-      className={cn(
-        "text-sm font-medium text-[var(--bt-text-primary)] leading-none",
-        "peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-        className
-      )}
-      {...props}
-    >
-      {children}
-      {required && <span className="ml-1 text-[var(--bt-destructive)]" aria-hidden="true">*</span>}
-    </label>
-  );
-}`;
+const requiredLabelCode = `<div className="flex flex-col gap-2">
+  <Label htmlFor="demo-email" required>Email address</Label>
+  <Input id="demo-email" type="email" placeholder="you@example.com" />
+</div>`;
 
 const propsData: PropRow[] = [
   { prop: "required", type: "boolean", defaultValue: "false", description: "Appends a red asterisk (*) to indicate a required field" },
@@ -84,14 +63,14 @@ export default function LabelPage() {
         </p>
       </div>
 
-      <ComponentPreview title="Basic Label" code={labelCode}>
+      <ComponentPreview title="Basic Label" code={basicLabelCode}>
         <div className="flex flex-col gap-2">
           <Label htmlFor="demo-name">Full name</Label>
           <Input id="demo-name" placeholder="John Doe" />
         </div>
       </ComponentPreview>
 
-      <ComponentPreview title="Required Field" code={labelCode}>
+      <ComponentPreview title="Required Field" code={requiredLabelCode}>
         <div className="flex flex-col gap-2">
           <Label htmlFor="demo-email" required>Email address</Label>
           <Input id="demo-email" type="email" placeholder="you@example.com" />

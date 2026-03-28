@@ -108,39 +108,19 @@ export function Toggle({
 }
 `;
 
-const toggleCode = `// toggle.types.ts
-export type ToggleSize = "sm" | "md" | "lg";
-export interface ToggleProps {
-  checked?: boolean;
-  defaultChecked?: boolean;
-  onCheckedChange?: (checked: boolean) => void;
-  disabled?: boolean;
-  size?: ToggleSize;
-  theme?: BtTheme;
-}
+const toggleSizesCode = `<Toggle size="sm" defaultChecked />
+<Toggle size="md" defaultChecked />
+<Toggle size="lg" defaultChecked />`;
 
-// Toggle.tsx
-"use client";
-import { useState, useCallback } from "react";
-import { cn } from "@/lib/utils";
+const toggleControlledCode = `const [on, setOn] = useState(false);
 
-export function Toggle({ checked: controlledChecked, defaultChecked = false, onCheckedChange, disabled = false, size = "md", theme, className }: ToggleProps) {
-  const [internalChecked, setInternalChecked] = useState(defaultChecked);
-  const isChecked = controlledChecked !== undefined ? controlledChecked : internalChecked;
-  const toggle = () => { if (disabled) return; const next = !isChecked; if (controlledChecked === undefined) setInternalChecked(next); onCheckedChange?.(next); };
-  return (
-    <div role="switch" aria-checked={isChecked} tabIndex={disabled ? -1 : 0}
-      onClick={toggle} onKeyDown={(e) => (e.key === " " || e.key === "Enter") && (e.preventDefault(), toggle())}
-      className={cn("relative inline-flex items-center rounded-[var(--bt-radius-full)] cursor-pointer transition-colors duration-200 select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--bt-ring)]",
-        { sm: "h-5 w-9", md: "h-6 w-11", lg: "h-7 w-14" }[size],
-        isChecked ? "bg-[var(--bt-accent)]" : "bg-[var(--bt-bg-muted)] border border-[var(--bt-border)]",
-        disabled && "opacity-[var(--bt-disabled-opacity)] pointer-events-none", className)}>
-      <span aria-hidden className={cn("absolute top-1/2 -translate-y-1/2 left-0.5 rounded-full bg-white shadow-sm transition-transform duration-200",
-        { sm: "h-3.5 w-3.5", md: "h-[18px] w-[18px]", lg: "h-[22px] w-[22px]" }[size],
-        isChecked ? { sm: "translate-x-4", md: "translate-x-5", lg: "translate-x-7" }[size] : "translate-x-0")} />
-    </div>
-  );
-}`;
+<div className="flex items-center gap-3">
+  <Toggle checked={on} onCheckedChange={setOn} />
+  <span>{on ? "On" : "Off"}</span>
+</div>`;
+
+const toggleDisabledCode = `<Toggle disabled />
+<Toggle disabled defaultChecked />`;
 
 const propsData: PropRow[] = [
   { prop: "checked", type: "boolean", defaultValue: "-", description: "Controlled on/off state" },
@@ -162,7 +142,7 @@ export default function TogglePage() {
         </p>
       </div>
 
-      <ComponentPreview title="Sizes" code={toggleCode}>
+      <ComponentPreview title="Sizes" code={toggleSizesCode}>
         <VariantGrid>
           <Toggle size="sm" defaultChecked />
           <Toggle size="md" defaultChecked />
@@ -170,14 +150,14 @@ export default function TogglePage() {
         </VariantGrid>
       </ComponentPreview>
 
-      <ComponentPreview title="Controlled" code={toggleCode}>
+      <ComponentPreview title="Controlled" code={toggleControlledCode}>
         <div className="flex items-center gap-3">
           <Toggle checked={on} onCheckedChange={setOn} />
           <span className="text-sm text-[var(--bt-text-secondary)]">{on ? "On" : "Off"}</span>
         </div>
       </ComponentPreview>
 
-      <ComponentPreview title="Disabled" code={toggleCode}>
+      <ComponentPreview title="Disabled" code={toggleDisabledCode}>
         <VariantGrid>
           <Toggle disabled />
           <Toggle disabled defaultChecked />

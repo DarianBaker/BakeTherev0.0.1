@@ -109,40 +109,19 @@ export function Checkbox({
 }
 `;
 
-const checkboxCode = `// checkbox.types.ts
-export type CheckboxSize = "sm" | "md" | "lg";
-export interface CheckboxProps {
-  checked?: boolean;
-  defaultChecked?: boolean;
-  onCheckedChange?: (checked: boolean) => void;
-  disabled?: boolean;
-  size?: CheckboxSize;
-  theme?: BtTheme;
-  className?: string;
-}
+const sizesCode = `<Checkbox size="sm" defaultChecked />
+<Checkbox size="md" defaultChecked />
+<Checkbox size="lg" defaultChecked />`;
 
-// Checkbox.tsx
-"use client";
-import { useState, useCallback, useId } from "react";
-import { cn } from "@/lib/utils";
-import { useBakeThereTheme } from "../../provider";
+const controlledCode = `const [checked, setChecked] = useState(false);
 
-export function Checkbox({ checked: controlledChecked, defaultChecked = false, onCheckedChange, disabled = false, size = "md", theme, className }: CheckboxProps) {
-  const { theme: contextTheme } = useBakeThereTheme();
-  const [internalChecked, setInternalChecked] = useState(defaultChecked);
-  const isChecked = controlledChecked !== undefined ? controlledChecked : internalChecked;
-  const toggle = () => { if (disabled) return; const next = !isChecked; if (controlledChecked === undefined) setInternalChecked(next); onCheckedChange?.(next); };
-  return (
-    <div role="checkbox" aria-checked={isChecked} tabIndex={disabled ? -1 : 0}
-      onClick={toggle} onKeyDown={(e) => e.key === " " && (e.preventDefault(), toggle())}
-      className={cn("inline-flex items-center justify-center rounded-[var(--bt-radius-sm)] border cursor-pointer transition-colors select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--bt-ring)]",
-        isChecked ? "bg-[var(--bt-accent)] border-[var(--bt-accent)]" : "bg-[var(--bt-bg-surface)] border-[var(--bt-border)]",
-        { sm: "h-4 w-4", md: "h-5 w-5", lg: "h-6 w-6" }[size],
-        disabled && "opacity-[var(--bt-disabled-opacity)] pointer-events-none", className)}>
-      {isChecked && <svg viewBox="0 0 12 12" fill="none" className="text-[var(--bt-text-inverse)] h-3 w-3"><path d="M2 6L5 9L10 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
-    </div>
-  );
-}`;
+<div className="flex items-center gap-3">
+  <Checkbox checked={checked} onCheckedChange={setChecked} />
+  <span>{checked ? "Checked" : "Unchecked"}</span>
+</div>`;
+
+const disabledCheckboxCode = `<Checkbox disabled />
+<Checkbox disabled defaultChecked />`;
 
 const propsData: PropRow[] = [
   { prop: "checked", type: "boolean", defaultValue: "-", description: "Controlled checked state" },
@@ -164,7 +143,7 @@ export default function CheckboxPage() {
         </p>
       </div>
 
-      <ComponentPreview title="Sizes" code={checkboxCode}>
+      <ComponentPreview title="Sizes" code={sizesCode}>
         <VariantGrid>
           <Checkbox size="sm" defaultChecked />
           <Checkbox size="md" defaultChecked />
@@ -172,7 +151,7 @@ export default function CheckboxPage() {
         </VariantGrid>
       </ComponentPreview>
 
-      <ComponentPreview title="Controlled" code={checkboxCode}>
+      <ComponentPreview title="Controlled" code={controlledCode}>
         <div className="flex items-center gap-3">
           <Checkbox checked={checked} onCheckedChange={setChecked} />
           <span className="text-sm text-[var(--bt-text-secondary)]">
@@ -181,7 +160,7 @@ export default function CheckboxPage() {
         </div>
       </ComponentPreview>
 
-      <ComponentPreview title="Disabled" code={checkboxCode}>
+      <ComponentPreview title="Disabled" code={disabledCheckboxCode}>
         <VariantGrid>
           <Checkbox disabled />
           <Checkbox disabled defaultChecked />
