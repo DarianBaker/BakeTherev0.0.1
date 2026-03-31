@@ -44,3 +44,6 @@ next-env.d.ts
 .superpowers/
 .claude/
 docs/superpowers/
+
+# personal push guide (not for repo)
+PUSH_GUIDE.md
